@@ -1,29 +1,45 @@
 
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { createBrowserRouter, Route, createRoutesFromElements, RouterProvider, Navigate  } from 'react-router-dom'
+import Home from "./pages/home"
+import Teachers from './pages/teachers';
+import Parents from './pages/Parents';
+import WritingCoach from './pages/WritingCoach';
+import Layout from './pages/layout';
+import PageNotFound from './pages/pageNotFound';
+import Learners from './pages/learners';
 
-import Header from './components/header'
-import HeroSection from './herosection'
-import Client from './client';
-import Section from './components/section';
-import { sectionArr } from './components/dummyData';
-import {TestimonialSlider} from "./TestimonialSlider"
+
 
 function App() {
-  // const [count, setCount] = useState(0)
+
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path='/' element={<Layout />}>
+
+        {/* Homepage */}
+        <Route index element={<Home />} />
+  
+        {/* Redirect /home to / */}
+        <Route path='/home' element={<Navigate to='/' replace />} />
+  
+        {/* Other Pages */}
+        <Route path='/teachers' element={<Teachers />} />
+        <Route path='/learners' element={<Learners />} />
+        <Route path='/parents' element={<Parents />} />
+        <Route path='/writingcoach' element={<WritingCoach />} />
+  
+        {/* 404 Page */}
+        <Route path='*' element={<PageNotFound />} />
+      </Route>
+    )
+  )
 
   return (
     <>
-      <Header />
-      <HeroSection />
-      <Client />
-      <h1 className='display-6 text-center mt-5 pt-4'>On-demand AI-powered <br /> support for education.</h1>
-      {sectionArr?.length ? sectionArr?.map((item, index) => {
-        return <Section key={index} title={item.title} heading={item.heading} detail={item.detail} image={item.image} right={item.right} />
-      }) : null}
-       <TestimonialSlider />
+      <RouterProvider router={router} fallbackElement={<h1>Loading.......</h1>} />
 
-      <br /><br /><br />
     </>
   )
 }

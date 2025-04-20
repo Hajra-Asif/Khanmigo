@@ -9,32 +9,38 @@
 .herosection{
  background-color: #e0d6f4;
 }
+.footer{
+  background-color: #191410;
+}
 .card{
   background-color: transparent !important;
   border: none !important;
 }
-/* Custom arrows for the carousel */
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  background-color: black;
-  border-radius: 50%;
-  width: 2.5rem;
-  height: 2.5rem;
-  background-size: 1.2rem;
-  padding: 1rem;
+
+
+
+
+.swiper-pagination-bullet {
+  background-color: #ccc;
+  opacity: 1;
 }
 
-.carousel-control-prev,
-.carousel-control-next {
-  width: 50%;
-  padding: 1rem;
+.swiper-pagination-bullet-active {
+  background-color: #000;
 }
 
-/* Styling for carousel indicators (dots at the bottom) */
-.carousel-indicators [data-bs-target] {
-  background-color: gray;
+
+
+.khansection{
+  background-color: #f4eee2;
+}
+.pricingcard{
+  background-color: #d4f2ff !important;
+  border-radius: 40px !important;
 }
 
-.carousel-indicators .active {
-  background-color: black;
+.herocontent{
+  background-color: rgb(177, 204, 253);
 }
+
+

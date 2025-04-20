@@ -1,15 +1,12 @@
 import React from 'react'
-import theWall from './assets/theWalllogo.svg'
-import commonSense from './assets/commonsense.svg'
-import washington from './assets/washington.svg'
 
 
 const Client = () => {
 
     let clientArr = [
-        { img : theWall , tagline : "“Forget ChatGPT. These are the best AI-powered apps.”" },
-        { img : commonSense , tagline : "Khanmigo receives an overall 4-star rating making it a top-rated AI-for-education tool." },
-        { img : washington , tagline : "“One teacher said she noticed students posing more questions to Khanmigo than they might typically ask.”" }
+        { img : "/assets/thewalllogo.svg" , tagline : "“Forget ChatGPT. These are the best AI-powered apps.”" },
+        { img : "/assets/commonsense.svg" , tagline : "Khanmigo receives an overall 4-star rating making it a top-rated AI-for-education tool." },
+        { img : "/assets/washington.svg" , tagline : "“One teacher said she noticed students posing more questions to Khanmigo than they might typically ask.”" }
     ]
 
   return (

@@ -1,5 +1,10 @@
 import React from "react";
-import { Carousel, Container, Row, Col, Card, Image } from "react-bootstrap";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { Container, Image } from "react-bootstrap";
 import "./App.css"; // Optional, for custom CSS
 
 const testimonials = [
@@ -29,55 +34,57 @@ const testimonials = [
   },
 ];
 
-export function TestimonialSlider() {
+
+
+export  function TestimonialSlider({ heading, para }) {
   return (
-  <div className="mt-5 maindiv p-0 p-lg-5" style={{backgroundColor : "#f4eee2"}}>
-    <h2 className="display-5 text-center fw-meduim">Praise for Khanmigo</h2>
-      <Container className="my-5">
-      <Carousel indicators={true} controls={true} interval={null}>
-        {testimonials.map((item, index) => (
-          <Carousel.Item key={index}>
-            <Row className="d-flex justify-content-center">
-              <Col md={8}>
-                <div
-                  style={{
-                    backgroundColor: item.bg,
-                    borderRadius: "1rem",
-                    padding: "1.5rem",
-                    minHeight: "300px",
-                  }}
-                >
-                  <Card className="border-0 bg-transparent">
-                    <Card.Body>
-                      <Card.Text style={{ fontSize: "1.1rem" }}>
-                        “{item.quote}”
-                      </Card.Text>
-                      <div className="d-flex align-items-center mt-4">
-                        <Image
-                          src={item.image}
-                          roundedCircle
-                          width={50}
-                          height={50}
-                          className="me-3"
-                        />
-                        <div>
-                          <div className="fw-semibold">{item.name}</div>
-                          <div className="text-muted" style={{ fontSize: "0.9rem" }}>
-                            {item.title}
-                          </div>
-                        </div>
-                      </div>
-                    </Card.Body>
-                  </Card>
+    <div className="mt-5 testimonial-section py-5" style={{ backgroundColor: "#f4eee2" }}>
+      <h2 className="pt-5 text-center display-5 fw-semibold px-0 px-lg-5 mx-auto" style={{width : "80%"}}>{heading}</h2>
+      <p className="text-center mb-4 mx-auto  px-2 px-lg-5" >{para}</p>
+
+      <Container>
+        <Swiper
+          modules={[Navigation, Pagination, Autoplay]}
+          spaceBetween={30}
+          slidesPerView={1}
+          pagination={{ clickable: true }}
+          autoplay={{ delay: 5000 }}
+          loop={true}
+        >
+          {testimonials.map((item, index) => (
+            <SwiperSlide key={index}>
+              <div
+                style={{
+                  backgroundColor: item.bg,
+                  borderRadius: "1rem",
+                  padding: "2rem",
+                  minHeight: "300px",
+                  transition: "all 0.4s ease",
+                }}
+              >
+                <p style={{ fontSize: "1.2rem", fontStyle: "italic" }}>
+                  “{item.quote}”
+                </p>
+                <div className="d-flex align-items-center mt-4">
+                  <Image
+                    src={item.image}
+                    roundedCircle
+                    width={60}
+                    height={60}
+                    className="me-3"
+                  />
+                  <div>
+                    <h5 className="mb-0">{item.name}</h5>
+                    <small className="text-muted">{item.title}</small>
+                  </div>
                 </div>
-              </Col>
-            </Row>
-          </Carousel.Item>
-        ))}
-      </Carousel>
-    </Container>
-  </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </Container>
+    </div>
   );
 }
 
-// export default TestimonialSlider
+export default TestimonialSlider
